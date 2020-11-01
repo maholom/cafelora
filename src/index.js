@@ -38,7 +38,7 @@ label: 'espresso',
 },]*/
 
 
-/*Seznam napoju*/
+/*Seznam napoju
 const drinks = [
   {
     id: 'cappuccino',
@@ -88,5 +88,17 @@ const Napojak = (props) => {
 
 
 const container = document.querySelector('.drinks-list');
-container.appendChild(Napojak({ drinks: drinks}));
+container.appendChild(Napojak({ drinks: drinks}));*/
 
+
+const nacti = () => {
+const container = document.querySelector('.drinks-list');
+fetch('http://cafelora.kodim.cz/api/drinks')
+.then((response) => response.json())
+.then((data) => {
+for (let i = 0; i < data.length; i++) {
+container.appendChild(Drink(data[i]));
+}});
+};
+
+nacti();
