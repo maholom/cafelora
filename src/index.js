@@ -1,6 +1,6 @@
 import './index.html';
 import './style.css';
-import {LayerSeznam} from './Layer'
+import { Drink } from './Drink/index.js';
 
 
 console.log('funguju!');
@@ -23,21 +23,8 @@ navLinks.forEach((navLink) => {
 });
 
 /*Objednávání nápojů*/
-const drinkCup = document.querySelector('.drink__cup');
-const orderBtn = document.querySelector('.order-btn');
-let ordered = false
 
-orderBtn.addEventListener('click', () => {
-  drinkCup.classList.toggle('drink__cup--selected');
-  if (ordered === false) {
-    orderBtn.textContent = 'Zrušit';
-  } else {
-    orderBtn.textContent = 'Objednat'
-  }
-  ordered = !ordered;
-});
-
-/*Ingredience jako komponenty*/
+/*Ingredience jako komponenty
 
 const suroviny = [
   {color: '#feeeca',
@@ -48,7 +35,25 @@ label: 'teplé mléko'
 },
 {color: '#613916',
 label: 'espresso',
-},]
+},]*/
 
-const drinkInfo = document.querySelector('.drink__info');
-drinkInfo.innerHTML += LayerSeznam ({items:suroviny})
+
+/*Seznam napoju*/
+
+const drinksList = document.querySelector('.drinks-list');
+drinksList.appendChild(Drink(
+  {
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ]},
+    ));
