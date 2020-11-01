@@ -39,9 +39,26 @@ label: 'espresso',
 
 
 /*Seznam napoju*/
-
-const drinksList = document.querySelector('.drinks-list');
-drinksList.appendChild(Drink(
+const drinks = [
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    ordered: false,
+    layers: [
+      {
+        color: '#feeeca',
+        label: 'mléčná pěna',
+      },
+      {
+        color: '#fed7b0',
+        label: 'teplé mléko',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
   {
     id: 'romano',
     name: 'Romano',
@@ -55,5 +72,21 @@ drinksList.appendChild(Drink(
         color: '#613916',
         label: 'espresso',
       },
-    ]},
-    ));
+    ],
+  },
+];
+
+const Napojak = (props) => {
+  const element = document.createElement('div');
+  element.className = 'napojak';
+
+  for (let i = 0; i < props.drinks.length; i += 1) {
+    element.appendChild(Drink(props.drinks[i]));
+  }
+  return element;;
+};
+
+
+const container = document.querySelector('.drinks-list');
+container.appendChild(Napojak({ drinks: drinks}));
+
