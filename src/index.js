@@ -1,5 +1,7 @@
 import './index.html';
 import './style.css';
+import {LayerSeznam} from './Layer'
+
 
 console.log('funguju!');
 
@@ -35,7 +37,18 @@ orderBtn.addEventListener('click', () => {
   ordered = !ordered;
 });
 
+/*Ingredience jako komponenty*/
 
+const suroviny = [
+  {color: '#feeeca',
+   label: 'mléčná pěna',
+  }, 
+{color: '#fed7b0', 
+label: 'teplé mléko'
+},
+{color: '#613916',
+label: 'espresso',
+},]
 
-
-
+const drinkInfo = document.querySelector('.drink__info');
+drinkInfo.innerHTML += LayerSeznam ({items:suroviny})
